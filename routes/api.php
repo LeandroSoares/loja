@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('api')->group(function () {
+    Route::resource('/author',  'Api\AuthorController');
+});
+Route::fallback(function () {
+    return response()->json([
+        'message' => 'Page Not Found. If error persists, contact leandrogamedesigner@gmail.com'
+    ], 404);
 });

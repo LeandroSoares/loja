@@ -15,12 +15,14 @@ class AuthorBook extends Migration
     {
         Schema::create('author_book', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigIncrements('author_id');
-            $table->bigIncrements('book_id');
-
-            $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
-            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->bigInteger('author_id')->unsigned();
+            $table->bigInteger('book_id')->unsigned();
             $table->timestamps();
+        });
+
+        Schema::table('author_book', function ($table) {
+            $table->foreign('author_id')->references('id')->on('authors');
+            $table->foreign('book_id')->references('id')->on('books');
         });
     }
 

@@ -11,13 +11,5 @@
 |
 */
 
-Route::prefix('dashboard')
-	->namespace('dashboard')
-	->group(function () {
-		Route::get('/', 'DashboardController@index');
-	});
-
-Auth::routes();
-
 Route::get('/', 'AngularController@index');
 Route::get('/{any}', 'AngularController@index');

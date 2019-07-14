@@ -1,0 +1,31 @@
+<form (submit)="onSubmit()" class=" form">
+  <div *ngIf="method!='destroy'; else toDelete">
+    <div class="form-group">
+      <label for="name">Nome</label>
+      <input [(ngModel)]="author_model.name" class="form-control" type="text" id="name" name="name">
+      <small *ngIf="errors.name" class="badge badge-danger">{{errors.name}}</small>
+    </div>
+    <div class="form-group">
+      <label for="cpf">CPF</label>
+      <input [(ngModel)]="author_model.cpf" class="form-control" type="text" id="cpf" name="cpf">
+      <small *ngIf="errors.cpf" class="badge badge-danger">{{errors.cpf}}</small>
+    </div>
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input [(ngModel)]="author_model.email" class="form-control" type="email" id="email" name="email">
+      <small *ngIf="errors.email" class="badge badge-danger">{{errors.email}}</small>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary float-right">Salvar</button>
+    </div>
+  </div>
+</form>
+<ng-template #toDelete>
+  <div>
+    Tem certeza que quer deletar {{author_model.name}}?
+  </div>
+  <div class="form-group">
+    <button type='button' (click)="onAbort()" class="btn btn-warning float-right">Não</button>
+    <button class="btn btn-danger float-right">Sim</button>
+  </div>
+</ng-template>

@@ -17,10 +17,9 @@ class CreateBooksTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('subject');
-            $table->string('authors');
             $table->date('publish_year');
-            $table->number('price');
-            $table->number('quantity');
+            $table->float('price', 8, 2);
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

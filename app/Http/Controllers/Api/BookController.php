@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Author;
+use App\Book;
 use Illuminate\Http\Request;
-
-class AuthorController extends Controller
+use App\Http\Controllers\Controller;
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class AuthorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Author  $author
+     * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Author $author)
+    public function show(Book $book)
     {
         //
     }
@@ -52,10 +52,10 @@ class AuthorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Author  $author
+     * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(Author $author)
+    public function edit(Book $book)
     {
         //
     }
@@ -64,10 +64,10 @@ class AuthorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Author  $author
+     * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Author $author)
+    public function update(Request $request, Book $book)
     {
         //
     }
@@ -75,10 +75,10 @@ class AuthorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Author  $author
+     * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Author $author)
+    public function destroy(Book $book)
     {
         //
     }
