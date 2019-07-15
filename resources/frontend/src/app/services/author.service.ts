@@ -12,7 +12,7 @@ export class AuthorService {
   constructor(private http: HttpClient) {
     this.api_url = environment.api_url;
   }
-  search(query: any) {
+  search(query: String) {
     return this.http.get(this.api_url + 'author?q=' + query);
   }
   index() {

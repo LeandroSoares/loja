@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from 'src/app/models/book.model';
 
 @Component({
   selector: 'app-store',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit {
-
+  books: Book[];
   constructor() { }
-
+  onUpdateBookSearch(data: Book[]) {
+    this.books = data;
+  }
   ngOnInit() {
   }
 

@@ -1,3 +1,28 @@
-<p>
-  store works!
-</p>
+<header>
+  <div class="container">
+    <nav class="navbar navbar-expand-sm navbar-light">
+      <a class="navbar-brand" href="#">Loja de livros</a>
+      <a class="btn btn-outline-secondary float-right" href="dashboard">Dashboard</a>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <app-book-search-input (update)="onUpdateBookSearch($event)"></app-book-search-input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let book of books" class="card" style="width: 18rem;">
+      <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+      <div class="card-body">
+        <h5 class="card-title">{{book.title}}</h5>
+        <p class="card-text">{{book.subject}}</p>
+        <p class="card-text">{{book.price|currency}}</p>
+        <a href="#" class="btn btn-primary">adicionar no carrinho</a>
+      </div>
+    </div>
+
+  </div>
+</div>

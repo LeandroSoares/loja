@@ -17,7 +17,7 @@ export class BookManageComponent implements OnInit {
   dialog_titles = { 'store': 'Novo livro', 'update': 'Atualizar livro', 'destroy': 'Deletar livro' };
 
   constructor(private bookService: BookService) { this.updateBooks(); }
-
+ 
   updateBooks() {
     this.bookService.index()
       .subscribe((response: Book[]) => this.books = response);
