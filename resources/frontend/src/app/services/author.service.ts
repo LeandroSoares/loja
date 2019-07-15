@@ -7,9 +7,13 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthorService {
+
   api_url;
   constructor(private http: HttpClient) {
     this.api_url = environment.api_url;
+  }
+  search(query: any) {
+    return this.http.get(this.api_url + 'author?q=' + query);
   }
   index() {
     return this.http.get(this.api_url + 'author');

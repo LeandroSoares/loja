@@ -1,6 +1,14 @@
 Set-Location ./resources/frontend;
 
+echo "Instalando dependencias do angular";
+
+npm i;
+
+echo "Compilando o app angular";
+
 ng build --prod --aot;
+
+echo "Organizando arquivos";
 
 Remove-Item ../../public/*.js;
 Remove-Item ../../public/*.js;

@@ -1,0 +1,53 @@
+<form (submit)="onSubmit()" class=" form">
+  <div *ngIf="method!='destroy'; else toDelete">
+
+    <div class="form-group">
+      <label for="title">Título</label>
+      <input [(ngModel)]="model.title" class="form-control" type="text" id="title" name="title">
+      <small *ngIf="errors.title" class="badge badge-danger">{{errors.title}}</small>
+    </div>
+
+    <div class="form-group">
+      <label for="subject">Assunto</label>
+      <input [(ngModel)]="model.subject" class="form-control" type="text" id="subject" name="subject">
+      <small *ngIf="errors.subject" class="badge badge-danger">{{errors.subject}}</small>
+    </div>
+
+    <div class="form-group">
+      <label for="publish_year">Ano de publicação</label>
+      <input [(ngModel)]="model.publish_year" class="form-control" type="date" id="publish_year" name="publish_year">
+      <small *ngIf="errors.publish_year" class="badge badge-danger">{{errors.publish_year}}</small>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Preço</label>
+      <input [(ngModel)]="model.price" class="form-control" type="number" id="price" name="price">
+      <small *ngIf="errors.price" class="badge badge-danger">{{errors.price}}</small>
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantidade do estoque</label>
+      <input [(ngModel)]="model.quantity" class="form-control" type="number" id="quantity" name="quantity">
+      <small *ngIf="errors.quantity" class="badge badge-danger">{{errors.quantity}}</small>
+    </div>
+
+    <div class="form-group">
+      <label>Autores</label>
+      <app-author-select [model]="model.authors"></app-author-select>
+      <small *ngIf="errors.authors" class="badge badge-danger">{{errors.authors}}</small>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary float-right">Salvar</button>
+    </div>
+  </div>
+</form>
+<ng-template #toDelete>
+  <div>
+    Tem certeza que quer deletar?
+  </div>
+  <div class="form-group">
+    <button type='button' (click)="onAbort()" class="btn btn-warning float-right">Não</button>
+    <button class="btn btn-danger float-right">Sim</button>
+  </div>
+</ng-template>

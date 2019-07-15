@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 Route::middleware('api')->group(function () {
     Route::resource('/author',  'Api\AuthorController');
+    Route::get('/book/{query}',  'Api\BookController@search');
+    Route::resource('/book',  'Api\BookController');
 });
 Route::fallback(function () {
     return response()->json([

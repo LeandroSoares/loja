@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>Livros</h4>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary float-right" (click)="showBookForm()">Novo livro</button>
+    </div>
+    <div class="col-sm-12">
+      <hr>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Título</th>
+            <th>Assunto</th>
+            <th>Ano de publicação</th>
+            <th>Preço</th>
+            <th>Estoque</th>
+            <th>Autores</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let book of books">
+          <td>{{book.id}}</td>
+          <td>{{book.title}}</td>
+          <td>{{book.subject}}</td>
+          <td>{{book.publish_year}}</td>
+          <td>{{book.price|currency}}</td>
+          <td>{{book.quantity}}</td>
+          <td>
+            <ul>
+              <li *ngFor="let author of book.authors">{{author.name}}</li>
+            </ul>
+          </td>
+          <td><button class="btn btn-primary" (click)="showBookForm(book, 'update')">Edit</button></td>
+          <td><button class="btn btn-danger" (click)="showBookForm(book, 'destroy')">Delete</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="dialog" *ngIf="show_book_form">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{current_form_title}} </h5>
+          <button type="button" (click)="hideBookForm()" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-book-form (abort)="bookFormFinish()" (success)="bookFormFinish()" [method]='current_method'
+            [model]="current_book">
+          </app-book-form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>

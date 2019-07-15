@@ -4,15 +4,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { StoreComponent } from './store/store/store.component';
-import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
-import { NavbarComponent } from './dashboard/navbar/navbar.component';
-import { UserManageComponent } from './dashboard/user-manage/user-manage.component';
-import { BookManageComponent } from './dashboard/book-manage/book-manage.component';
-import { AuthorManageComponent } from './dashboard/author-manage/author-manage.component';
-import { AuthorListComponent } from './components/author-list/author-list.component';
+import { StoreComponent } from './views/store/store/store.component';
+import { DashboardComponent } from './views/dashboard/dashboard/dashboard.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { UserManageComponent } from './views/dashboard/user-manage/user-manage.component';
+import { BookManageComponent } from './views/dashboard/book-manage/book-manage.component';
+import { AuthorManageComponent } from './views/dashboard/author-manage/author-manage.component';
 import { AuthorFormComponent } from './components/author-form/author-form.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BookFormComponent } from './components/book-form/book-form.component';
+import { AuthorSelectComponent } from './components/author-select/author-select.component';
 
 const appRoutes: Routes = [
   { path: '', component: StoreComponent },
@@ -26,9 +27,9 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent, 
-    StoreComponent, 
-    DashboardComponent, NavbarComponent, UserManageComponent, BookManageComponent, AuthorManageComponent, AuthorListComponent, AuthorFormComponent
+    PageNotFoundComponent,
+    StoreComponent,
+    DashboardComponent, NavbarComponent, UserManageComponent, BookManageComponent, AuthorManageComponent, AuthorFormComponent, BookFormComponent, AuthorSelectComponent
   ],
   imports: [
     HttpClientModule,
@@ -36,7 +37,7 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true }
+      { enableTracing: false }
     )
   ],
   providers: [],

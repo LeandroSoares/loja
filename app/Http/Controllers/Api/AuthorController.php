@@ -13,9 +13,24 @@ class AuthorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Author::all();
+        $response = null;
+        if ($request->has('q')) {
+            if ($request->input('q') == "") {
+                $response = [];
+            } else {
+                $response = Author::where('name', 'like', '%' . $request->input('q') . '%')->get();
+            }
+        } else {
+            $response = Author::all();
+        }
+        return  $response;
+    }
+
+    public function search(Request $request)
+    {
+        return Author::where('name', 'like', '%' . $request->input('query') . '%');
     }
 
     /**

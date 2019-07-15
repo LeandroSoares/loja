@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Book;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 class BookController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        return Book::all();
     }
 
     /**
@@ -26,7 +27,20 @@ class BookController extends Controller
     {
         //
     }
+    private function getEntityWithRequestData(Request $request)
+    {
+        $entity = Book::where('title', $request->input('title'))->first();
+        return $entity;
+    }
 
+    private function verifyUniqueFields(Request $request, Book $entity)
+    {
+        $fields = [];
+        if ($request->input('title') == $entity->title) {
+            $fields[] = 'title';
+        }
+        return  $fields;
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +49,25 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = 'Created.';
+        $error = false;
+        $fields = [];
+
+        $entity = $this->getEntityWithRequestData($request);
+
+        if (empty($entity)) {
+            $book = Book::create($request->all());
+            foreach ($request->input('authors') as $author) {
+                $book->authors()->attach([$author['id']]);
+            }
+            $book->save();
+            return response(compact('message', 'error', 'fields'), 201);
+        } else {
+            $message = 'Book already exists.';
+            $fields = $this->verifyUniqueFields($request, $entity);
+            $error = true;
+            return response(compact('message', 'error', 'fields'), 200);
+        }
     }
 
     /**
@@ -46,7 +78,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return $book;
     }
 
     /**
@@ -69,7 +101,27 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $message = 'Updated.';
+        $error = false;
+        $fields = [];
+        $code = 200;
+
+        $entity = $this->getEntityWithRequestData($request);
+
+        if (empty($entity) || $entity->id == $book->id) {
+            $book->fill($request->all());
+            $authors_ids = [];
+            foreach ($request->input('authors') as $author) {
+                $authors_ids[] = $author['id'];
+            }
+            $book->authors()->sync($authors_ids);
+            $book->save();
+        } else {
+            $message = 'Book new values conflict.';
+            $fields = $this->verifyUniqueFields($request, $entity);
+            $error = true;
+        }
+        return response(compact('message', 'error', 'fields'), $code);
     }
 
     /**

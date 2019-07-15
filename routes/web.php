@@ -13,3 +13,4 @@
 
 Route::get('/', 'AngularController@index');
 Route::get('/{any}', 'AngularController@index');
+Route::get('/dashboard/{any}', 'AngularController@index');

@@ -27,10 +27,10 @@ export class AuthorManageComponent implements OnInit {
     this.show_author_form = false;
   }
 
-  showAuthorForm(model, method) {
+  showAuthorForm(model = null, method = 'store') {
     this.current_author = model ? Author.make(model.id, model.name, model.cpf, model.email) : new Author();
     this.show_author_form = true;
-    this.current_method = method || 'store';
+    this.current_method = method;
     this.current_form_title = this.dialog_titles[this.current_method];
   }
 

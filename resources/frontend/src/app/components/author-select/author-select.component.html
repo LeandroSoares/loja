@@ -1,0 +1,9 @@
+<input class="form-control" type="text" [(ngModel)]="query" (keyup)="updateSearch()">
+
+<div *ngFor="let author of foundFiltered()">{{author.name}}
+  <button class="btn btn-primary" type="button" (click)="add(author)"><i class="fa fa-plus"></i></button>
+</div>
+
+<div *ngFor="let author of authors">{{author.name}}
+  <button class="btn btn-primary" type="button" (click)="remove(author)"><i class="fa fa-minus"></i></button>
+</div>

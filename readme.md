@@ -31,3 +31,36 @@ retornar a tela principal com carrinho de compras zerado.
 
 - Laravel
 - Angular
+- automação com Powershell
+
+## Organização do projeto
+
+Para conseguir subir a aplicação sem ter que montar dois servidores(um para o laravel e um para o angular) estou construindo os dois projetos no mesmo repositório e faço um controller no laravel que utiliza o index gerado pelo angular.
+
+O app angular está em `./resources/frontend/`.
+
+Para gerar o app angular e organizar seus arquivos de distribuição dentro da estrutura do laravel, construí uma automação para compilar o app e copiar os arquivos, com o nome de "build_angular.ps1". 
+
+Dessa forma:
+- o index gerado é copiado para a pasta `./resources/views/` como `index.html`.
+- os arquivos js são copiados para `./public/`.
+
+## Running
+
+1. clone o projeto;
+2. Pelo terminal;
+ 2.1. utilize o composer para instalar as dependencias;
+ 2.2. execute o `./build_angular.ps1`; 
+3. Caso esteja local execute o `artisan serve` 
+
+## TODOS
+
+1. Criar autenticação e permissões para dashboard
+2. Criar crud de User
+3. Criar tela principal da loja
+    3.1 Filtro de itens por titulo e assunto
+4. Criar carrinho de compras
+    4.1 Entidade Cart 
+    4.2 Entidade Cart-Item
+5. Criar ordem de entrega
+6. Criar rotina de e-mail para confirmar que compra foi registrada.
