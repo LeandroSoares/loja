@@ -13,9 +13,18 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index(Request $request)
     {
-        return Book::all();
+        $response = Book::all();
+        if ($request->has('q')) {
+            if ($request->input('q') != "") {
+                $querybuilder = Book::where('title', 'like', '%' . $request->input('q') . '%')
+                    ->orWhere('subject', 'like', '%' . $request->input('q') . '%');
+                $response = $querybuilder->get();
+            }
+        }
+        return  $response;
     }
 
     /**
@@ -132,6 +141,7 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        return response(['message' => 'Deleted'], 200);
     }
 }

@@ -1,0 +1,10 @@
+<div class="card" style="width: 18rem;">
+  <img *ngIf="book.image" class="card-img-top" src="{{book.image}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{book.title}}</h5>
+    <p class="card-text">{{book.subject}}</p>
+    <p class="card-text">{{book.price|currency}}</p>
+    <button (click)="onAdd()" class="btn btn-primary">adicionar no <i class="fa fa-cart-plus"
+        aria-hidden="true"></i></button>
+  </div>
+</div>

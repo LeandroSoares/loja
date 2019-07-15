@@ -1,0 +1,14 @@
+ <div class="list">
+   <div class="item" *ngFor="let item of cartItemList()">
+     <div class="title">
+       {{ item.book.title }} =
+     </div>
+     <button (click)="addToCart(item.book)" class="btn btn-primary">
+       <div class="fa fa-plus"></div>
+     </button>
+     <div class="qtd">{{item.quantity}}</div>
+     <button (click)="removeFromCart(item.book)" class="btn btn-primary">
+       <div class="fa fa-minus"></div>
+     </button>
+   </div>
+ </div>

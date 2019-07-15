@@ -5,25 +5,17 @@
     </nav>
   </div>
   <div class="right-buttons">
-    <!-- <a id="dashboard" class="btn btn-outline-secondary" href="dashboard">Dashboard <i class="fa fa-tachometer"
-        aria-hidden="true"></i></a> -->
-    <button (click)="showCart()" class="btn btn-outline-primary">Cart <i class="fa fa-shopping-cart"
-        aria-hidden="true"></i></button>
+    <a href='/' class="btn btn-outline-primary">Voltar</a>
   </div>
 </header>
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <app-book-search-input (update)="onUpdateBookSearch($event)"></app-book-search-input>
-    </div>
-  </div>
-  <div class="row">
-    <div *ngFor="let book of books"  class="m-2">
-      <app-book-card [book]="book" (add)="addToCart(book)"></app-book-card>
-    </div>
+    Listar itens e adicionar campos para compor a ordem de servico
+
+    
   </div>
 </div>
-<div class="dialog" *ngIf="show_cart">
+<!-- <div class="dialog" *ngIf="show_cart">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -33,9 +25,20 @@
         </button>
       </div>
       <div class="modal-body">
-        <app-cart-item-list></app-cart-item-list>
+        Lista de compras
+        <div *ngFor="let item of cartItemList()">
+          <span>
+            {{ item.book.title }} x {{item.quantity}}
+          </span>
+          <button (click)="addToCart(item.book)" class="btn btn-primary">
+            <div class="fa fa-plus"></div>
+          </button>
+          <button (click)="removeFromCart(item.book)" class="btn btn-primary">
+            <div class="fa fa-minus"></div>
+          </button>
+        </div>
         <a href="checkout" class="btn btn-primary">Consolidar compra</a>
       </div>
     </div>
   </div>
-</div>
+</div> -->

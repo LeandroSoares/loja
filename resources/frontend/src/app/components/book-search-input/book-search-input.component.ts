@@ -9,7 +9,7 @@ import { Book } from 'src/app/models/book.model';
 })
 export class BookSearchInputComponent implements OnInit {
   @Output() update: EventEmitter<Book[]> = new EventEmitter();
-  query;
+  query="";
   constructor(private bookService: BookService) { }
   updateSearch() {
     this.bookService.search(this.query).subscribe((response: Book[]) => this.update.emit(response));

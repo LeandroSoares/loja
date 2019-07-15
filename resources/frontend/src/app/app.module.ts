@@ -15,13 +15,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { BookFormComponent } from './components/book-form/book-form.component';
 import { AuthorSelectComponent } from './components/author-select/author-select.component';
 import { BookSearchInputComponent } from './components/book-search-input/book-search-input.component';
+import { CheckoutComponent } from './views/store/checkout/checkout.component';
+import { CartItemListComponent } from './components/cart-item-list/cart-item-list.component';
+import { BookCardComponent } from './components/book-card/book-card.component';
 
 const appRoutes: Routes = [
   { path: '', component: StoreComponent },
+  { path: 'checkout', component: CheckoutComponent },
+
   { path: 'dashboard', component: DashboardComponent },
   { path: 'dashboard/user', component: UserManageComponent },
   { path: 'dashboard/author', component: AuthorManageComponent },
   { path: 'dashboard/book', component: BookManageComponent },
+
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -30,7 +36,18 @@ const appRoutes: Routes = [
     AppComponent,
     PageNotFoundComponent,
     StoreComponent,
-    DashboardComponent, NavbarComponent, UserManageComponent, BookManageComponent, AuthorManageComponent, AuthorFormComponent, BookFormComponent, AuthorSelectComponent, BookSearchInputComponent
+    DashboardComponent,
+    NavbarComponent,
+    UserManageComponent,
+    BookManageComponent,
+    AuthorManageComponent,
+    AuthorFormComponent,
+    BookFormComponent,
+    AuthorSelectComponent,
+    BookSearchInputComponent,
+    CheckoutComponent,
+    CartItemListComponent,
+    BookCardComponent
   ],
   imports: [
     HttpClientModule,
