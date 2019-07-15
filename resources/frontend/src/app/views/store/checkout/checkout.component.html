@@ -8,37 +8,38 @@
     <a href='/' class="btn btn-outline-primary">Voltar</a>
   </div>
 </header>
+
 <div class="container">
   <div class="row">
-    Listar itens e adicionar campos para compor a ordem de servico
-
-    
-  </div>
-</div>
-<!-- <div class="dialog" *ngIf="show_cart">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Carrinho de compras</h5>
-        <button type="button" (click)="hideCart()" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <div class=" col-md-6">
+      <h4>Itens no carrinho</h4>
+      <app-cart-item-list></app-cart-item-list>
+    </div>
+    <div class=" col-md-6">
+      <h4>Dados para entrega</h4>
+      <div class="form-group">
+        <label for="">Nome</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="model.name">
       </div>
-      <div class="modal-body">
-        Lista de compras
-        <div *ngFor="let item of cartItemList()">
-          <span>
-            {{ item.book.title }} x {{item.quantity}}
-          </span>
-          <button (click)="addToCart(item.book)" class="btn btn-primary">
-            <div class="fa fa-plus"></div>
-          </button>
-          <button (click)="removeFromCart(item.book)" class="btn btn-primary">
-            <div class="fa fa-minus"></div>
-          </button>
-        </div>
-        <a href="checkout" class="btn btn-primary">Consolidar compra</a>
+      <div class="form-group">
+        <label for="">CPF</label>
+        <input type="text" class="form-control" name="cpf" [(ngModel)]="model.cpf">
+      </div>
+      <div class="form-group">
+        <label for="">E-mail</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="model.email">
+      </div>
+      <div class="form-group">
+        <label for="">Endereço</label>
+        <input type="text" class="form-control" name="address" [(ngModel)]="model.address">
+      </div>
+      <div class="form-group">
+        <label for="">CEP</label>
+        <input type="text" class="form-control" name="postalcode" [(ngModel)]="model.postalcode">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary float-right">Confirmar</button>
       </div>
     </div>
   </div>
-</div> -->
+</div>

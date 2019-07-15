@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ICheckout } from 'src/app/models/checkout.interface';
 
 @Component({
   selector: 'app-checkout',
@@ -7,6 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
 
+  model: ICheckout = {
+    name: '',
+    cpf: '',
+    email: '',
+    address: '',
+    postalcode: '',
+    cart: []
+  };
   constructor() { }
 
   ngOnInit() {

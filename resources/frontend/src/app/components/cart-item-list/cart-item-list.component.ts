@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { Book } from 'src/app/models/book.model';
-import { CartItem } from 'src/app/models/cart-item.model';
+import { ICartItem } from 'src/app/models/cart-item.interface';
 
 @Component({
   selector: 'app-cart-item-list',
@@ -18,7 +18,7 @@ export class CartItemListComponent implements OnInit {
   removeFromCart(book: Book) {
     this.cartService.remove(book);
   }
-  cartItemList(): CartItem[] {
+  cartItemList(): ICartItem[] {
     return this.cartService.index();
   }
 

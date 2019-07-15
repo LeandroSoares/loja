@@ -7,7 +7,7 @@ export class Author {
 		instance.email = email;
 		return instance;
 	}
-	id: Number;
+	id: number;
 	name: String;
 	cpf: String;
 	email: String;

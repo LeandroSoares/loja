@@ -11,12 +11,12 @@ export class Book {
 		return new Book(id, title, subject, publish_year, price, quantity, authors);
 	}
 
-	id: Number;
+	id: number;
 	title: String;
 	subject: String;
 	publish_year: String;
-	price: Number;
-	quantity: Number;
+	price: number;
+	quantity: number;
 	authors: Author[];
 
 	constructor(id = null, title = null, subject = null, publish_year = null, price = null, quantity = null, authors = []) {
