@@ -55,13 +55,6 @@ Dessa forma:
 
 ## TODOS
 
-1. Criar autenticação e permissões para dashboard
-2. Criar crud de User
-3. Criar tela principal da loja - 80%
-    3.1 Filtro de itens por titulo e assunto - 50%
-4. Criar carrinho de compras 50%
-    4.1 Entidade Cart 
-    4.2 Entidade Cart-Item
-5. Criar ordem de entrega(checkout)
-    5.1 Entidade Checkout 
-6. Criar rotina de e-mail para confirmar que compra foi registrada.
+1. Criar recuperação de senha
+2. Criar rotina de e-mail para confirmar que compra foi registrada.
+3. Refinar regras de negócios para controle de estoque

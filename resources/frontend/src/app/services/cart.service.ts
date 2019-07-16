@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Book } from '../models/book.model';
 import { ICartItem } from '../models/cart-item.interface';
 
+export const CART_NAME = "cart";
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +21,7 @@ export class CartService {
     } else {
       this.cart[possibleItemIndex].quantity++;
     }
-    localStorage.setItem('loja-cart', JSON.stringify(this.cart));
+    localStorage.setItem(CART_NAME, JSON.stringify(this.cart));
   }
 
   remove(book: Book) {
@@ -31,10 +32,13 @@ export class CartService {
         this.cart.splice(possibleItemIndex, 1);
       }
     }
-    localStorage.setItem('loja-cart', JSON.stringify(this.cart));
+    localStorage.setItem(CART_NAME, JSON.stringify(this.cart));
+  }
+  destroy() {
+    localStorage.removeItem(CART_NAME);
   }
   constructor() {
-    let loadedCart = JSON.parse(localStorage.getItem('loja-cart'));
+    let loadedCart = JSON.parse(localStorage.getItem(CART_NAME));
     if (loadedCart) {
       this.cart = loadedCart;
     }

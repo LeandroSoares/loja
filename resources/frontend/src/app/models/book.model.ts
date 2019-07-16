@@ -5,7 +5,9 @@ export class Book {
 	fillable() { return ['title', 'subject', 'publish_year', 'price', 'quantity', 'authors'] };
 
 	static makeFromModel(model) {
-		return new Book(model['id'], model['title'], model['subject'], model['publish_year'], model['price'], model['quantity'], model['authors']);
+		let instance = new Book();
+		Object.assign(instance, model);
+		return instance;
 	}
 	static make(id, title, subject, publish_year, price, quantity, authors) {
 		return new Book(id, title, subject, publish_year, price, quantity, authors);

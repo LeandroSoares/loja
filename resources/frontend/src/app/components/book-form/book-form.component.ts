@@ -48,13 +48,9 @@ export class BookFormComponent implements OnInit {
   }
   modelIsFilled() {
     this.verifyEmptyFields();
-    let filled = true;
-    for (const key in this.errors) {
-      if (this.errors[key] != false) {
-        filled = false;
-        break;
-      }
-    }
+    let filled = Object.values(this.errors).reduce((last, current) => {
+      return current != false ? false : last;
+    }, true);
     return filled;
   }
   reset() {

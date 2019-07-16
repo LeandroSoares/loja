@@ -11,25 +11,19 @@ import { UserManageComponent } from './views/dashboard/user-manage/user-manage.c
 import { BookManageComponent } from './views/dashboard/book-manage/book-manage.component';
 import { AuthorManageComponent } from './views/dashboard/author-manage/author-manage.component';
 import { AuthorFormComponent } from './components/author-form/author-form.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BookFormComponent } from './components/book-form/book-form.component';
 import { AuthorSelectComponent } from './components/author-select/author-select.component';
 import { BookSearchInputComponent } from './components/book-search-input/book-search-input.component';
 import { CheckoutComponent } from './views/store/checkout/checkout.component';
 import { CartItemListComponent } from './components/cart-item-list/cart-item-list.component';
 import { BookCardComponent } from './components/book-card/book-card.component';
-
-const appRoutes: Routes = [
-  { path: '', component: StoreComponent },
-  { path: 'checkout', component: CheckoutComponent },
-
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'dashboard/user', component: UserManageComponent },
-  { path: 'dashboard/author', component: AuthorManageComponent },
-  { path: 'dashboard/book', component: BookManageComponent },
-
-  { path: '**', component: PageNotFoundComponent }
-];
+import { LoginComponent } from './views/dashboard/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { JwtInterceptor } from './services/jwt.interceptor';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
+import { CheckoutOkComponent } from './views/store/checkout-ok/checkout-ok.component';
 
 @NgModule({
   declarations: [
@@ -47,18 +41,24 @@ const appRoutes: Routes = [
     BookSearchInputComponent,
     CheckoutComponent,
     CartItemListComponent,
-    BookCardComponent
+    BookCardComponent,
+    LoginComponent,
+    DialogComponent,
+    UserFormComponent,
+    CheckoutOkComponent
   ],
   imports: [
     HttpClientModule,
     FormsModule,
     BrowserModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: false }
-    )
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 

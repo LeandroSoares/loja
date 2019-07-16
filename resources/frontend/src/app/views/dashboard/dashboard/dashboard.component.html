@@ -1,6 +1,18 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <h4>Dashboard main</h4>
-  
-  
+  <h4>Ordens de serviço</h4>
+
+  <div class="row" *ngFor="let order of orders">
+
+    <div class="col">{{order.id}}</div>
+    <div class="col">{{order.client.name}}</div>
+    <div class="col">{{order.client.address}}</div>
+    <div class="col">
+      <ul>
+        <li *ngFor="let item of order.items">
+          {{item.book.title}} x {{item.quantity}}
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

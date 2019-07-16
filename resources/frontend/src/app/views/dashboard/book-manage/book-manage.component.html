@@ -35,32 +35,14 @@
             </ul>
           </td>
           <td><button class="btn btn-primary" (click)="showBookForm(book, 'update')">Edit</button></td>
-          <td><button class="btn btn-danger" (click)="showBookForm(book, 'destroy')">Delete</button></td>
+          <!-- <td><button class="btn btn-danger" (click)="showBookForm(book, 'destroy')">Delete</button></td> -->
         </tr>
       </table>
     </div>
   </div>
-
-
-  <div class="dialog" *ngIf="show_book_form">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">{{current_form_title}} </h5>
-          <button type="button" (click)="hideBookForm()" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <app-book-form (abort)="bookFormFinish()" (success)="bookFormFinish()" [method]='current_method'
-            [model]="current_book">
-          </app-book-form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
+   <app-dialog *ngIf="show_book_form" [title]="current_form_title" (dismiss)="hideBookForm()">
+     <app-book-form (abort)="bookFormFinish()" (success)="bookFormFinish()" [method]='current_method'
+       [model]="current_book">
+     </app-book-form>
+   </app-dialog>
 </div>

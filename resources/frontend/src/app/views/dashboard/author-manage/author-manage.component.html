@@ -7,41 +7,24 @@
     <div class="col">
       <button class="btn btn-primary float-right" (click)="showAuthorForm()">Novo Autor</button>
     </div>
-    <div class="col-sm-12"><hr>
+    <div class="col-sm-12">
+      <hr>
       <table class="table table-striped">
-        
+
         <tr *ngFor="let author of authors">
           <td>{{author.id}}</td>
           <td>{{author.name}}</td>
           <td>{{author.cpf}}</td>
           <td>{{author.email}}</td>
           <td><button class="btn btn-primary" (click)="showAuthorForm(author, 'update')">Edit</button></td>
-          <td><button class="btn btn-danger" (click)="showAuthorForm(author, 'destroy')">Delete</button></td>
+          <!-- <td><button class="btn btn-danger" (click)="showAuthorForm(author, 'destroy')">Delete</button></td> -->
         </tr>
       </table>
     </div>
   </div>
-
-
-  <div class="dialog" *ngIf="show_author_form">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">{{current_form_title}} </h5>
-          <button type="button" (click)="hideAuthorForm()" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <app-author-form (abort)="authorFormFinish()" (success)="authorFormFinish()" [method]='current_method'
-            [model]="current_author">
-          </app-author-form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
+  <app-dialog *ngIf="show_author_form" [title]="current_form_title" (dismiss)="hideAuthorForm()">
+    <app-author-form (abort)="authorFormFinish()" (success)="authorFormFinish()" [method]='current_method'
+      [model]="current_author">
+    </app-author-form>
+  </app-dialog>
 </div>

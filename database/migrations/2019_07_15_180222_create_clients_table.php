@@ -18,8 +18,8 @@ class CreateClientsTable extends Migration
             $table->string('name');
             $table->string('cpf')->unique();
             $table->string('email')->unique();
-            $table->string('address')->unique();
-            $table->string('postalcode')->unique();
+            $table->string('address');
+            $table->string('postalcode');
             $table->timestamps();
         });
     }

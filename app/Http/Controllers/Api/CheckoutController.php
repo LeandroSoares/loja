@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Order;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Order;
+use App\Client;
+use App\OrderItem;
 
-class OrderController extends Controller
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return Order::all();
     }
 
     /**
@@ -35,7 +38,20 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = Client::firstOrCreate($request->only(['email', 'cpf']));
+        $client->fill($request->all());
+        $order = Order::create(['client_id' => $client->id]);
+        foreach ($request->input('cart') as $item) {
+            $book = Book::where('id', $item['book']['id'])->first();
+            OrderItem::create([
+                'order_id' => $order->id,
+                'book_id' => $book->id,
+                'quantity' => $item['quantity']
+            ]);
+            $book->quantity -= $item['quantity'];
+        }
+
+        return $order;
     }
 
     /**
@@ -46,7 +62,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return $order;
     }
 
     /**

@@ -1,0 +1,34 @@
+<form (submit)="onSubmit($event)" class=" form">
+  <div *ngIf="method!='destroy'; else toDelete">
+    <div class="form-group">
+      <label for="name">Nome</label>
+      <input [(ngModel)]="model.name" class="form-control" type="text" id="name" name="name">
+      <small *ngIf="errors.name" class="badge badge-danger">{{errors.name}}</small>
+    </div>
+
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input [(ngModel)]="model.email" class="form-control" type="email" id="email" name="email">
+      <small *ngIf="errors.email" class="badge badge-danger">{{errors.email}}</small>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Senha</label>
+      <input [(ngModel)]="model.password" class="form-control" type="password" id="password" name="password">
+      <small *ngIf="errors.password" class="badge badge-danger">{{errors.password}}</small>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary float-right">Salvar</button>
+    </div>
+  </div>
+</form>
+<ng-template #toDelete>
+  <div>
+    Tem certeza que quer deletar {{model.name}}?
+  </div>
+  <div class="form-group">
+    <button type='button' (click)="onAbort()" class="btn btn-warning float-right">Não</button>
+    <button class="btn btn-danger float-right">Sim</button>
+  </div>
+</ng-template>

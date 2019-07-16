@@ -22,7 +22,6 @@ class AuthenticationTest extends TestCase
 
 		$user->save();
 	}
-
 	 /**
      * @test
 	 * @runInSeparateProcess

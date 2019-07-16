@@ -1,0 +1,35 @@
+<header>
+  <div class="container">
+    <nav class="navbar navbar-expand-sm navbar-light">
+      <a class="navbar-brand" href="#">Loja de livros</a>
+    </nav>
+  </div>
+  <div class="right-buttons">
+    <a href='/' class="btn btn-outline-primary">Voltar</a>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h4>Resumo da compra</h4>
+    </div>
+    <div class="col">
+      <h5>Dados do comprador</h5>
+      <div>Cliente: {{model.name}}</div>
+      <div>CPF: {{model.cpf}}</div>
+      <div>E-mail: {{model.email}}</div>
+      <div>endereço: {{model.address}}</div>
+      <div>CEP: {{model.postalcode}}</div>
+    </div>
+    <div class="col">
+      <h5>Itens</h5>
+      <div *ngFor="let item of model.cart">
+        {{item.book.title}} x {{item.quantity}}={{item.quantity*item.book.price}}
+      </div>
+      <div>
+        total = {{itensTotalPrice()}}
+      </div>
+    </div>
+  </div>
+</div>

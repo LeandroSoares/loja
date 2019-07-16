@@ -26,6 +26,9 @@ export class StoreComponent implements OnInit {
   onUpdateBookSearch(data: Book[]) {
     this.books = data;
   }
+  cartEmpty() {
+    return this.cartService.index().length == 0;
+  }
   ngOnInit() { }
   showCart() { this.show_cart = true; }
   hideCart() { this.show_cart = false; }
