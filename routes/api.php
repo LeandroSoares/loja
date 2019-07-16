@@ -44,8 +44,4 @@ Route::middleware('api')->group(function () {
     Route::get('/user/{user}',  'Api\UserController@show');
 });
 
-Route::fallback(function () {
-    return response()->json([
-        'message' => 'Page Not Found. If error persists, contact leandrogamedesigner@gmail.com'
-    ], 404);
-});
+Route::fallback('Api\FallbackController@fall');
