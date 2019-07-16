@@ -14,9 +14,9 @@ class AuthorBook extends Migration
     public function up()
     {
         Schema::create('author_book', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('author_id')->unsigned();
-            $table->bigInteger('book_id')->unsigned();
+            $table->increments('id');
+            $table->integer('author_id')->unsigned();
+            $table->integer('book_id')->unsigned();
             $table->timestamps();
         });
 
